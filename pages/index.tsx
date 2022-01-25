@@ -50,7 +50,11 @@ const Home: NextPage = () => {
 
   const onCalculate = useCallback(() => {
     const sendPriceNumber = parseInt(sendPrice);
-    if (sendPriceNumber < 0 || sendPriceNumber > 10000) {
+    if (
+      sendPriceNumber < 0 ||
+      sendPriceNumber > 10000 ||
+      isNaN(sendPriceNumber)
+    ) {
       alert("송금액이 바르지 않습니다");
       return;
     }
@@ -76,6 +80,10 @@ const Home: NextPage = () => {
           setReceiptCountryPay(e.target.value as ReceiptCountryPay);
           break;
         case "sendPriceInput":
+          if (isNaN(Number(e.target.value))) {
+            alert("숫자만 입력 가능합니다.");
+            return;
+          }
           setSendPrice(e.target.value);
           break;
       }
