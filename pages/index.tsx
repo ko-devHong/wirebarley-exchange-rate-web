@@ -19,7 +19,7 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     fetch(
-      `http://api.currencylayer.com/live?access_key=43b25c9df041d6fa6673b4be433d686b&format=1&source=${SEND_COUNTRY_PAY}&currencies=${receiptCountryPay}`
+      `http://api.currencylayer.com/live?access_key=${process.env.NEXT_PUBLIC_ACCESSKEY}&format=1&source=${SEND_COUNTRY_PAY}&currencies=${receiptCountryPay}`
     )
       .then((res) => res.json())
       .then((data: APIResponse) => {
