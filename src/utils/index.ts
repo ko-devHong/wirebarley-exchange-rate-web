@@ -17,7 +17,10 @@ export const receiptCountryPays: ReceiptCountryPay[] = ["JPY", "KRW", "PHP"];
 
 export const getLocaleString = (price?: number) => {
   if (price) {
-    return parseFloat(price.toFixed(2)).toLocaleString();
+    return price.toLocaleString("en-US", {
+      maximumFractionDigits: 2,
+      minimumFractionDigits: 2,
+    });
   } else {
     return 0;
   }
