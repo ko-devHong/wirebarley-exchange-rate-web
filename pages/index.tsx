@@ -12,7 +12,7 @@ const SEND_COUNTRY_PAY = "USD";
 const Home: NextPage = () => {
   const [receiptCountryPay, setReceiptCountryPay] =
     useState<ReceiptCountryPay>("KRW");
-  const [sendPrice, setSendPrice] = useState("0");
+  const [sendPrice, setSendPrice] = useState("100");
   const [loading, setLoading] = useState(true);
   const [exchangeRate, setExchangeRate] = useState<APIResponse>();
   const [exchangeCalculateText, setExchangeCalculateText] = useState("");
@@ -44,7 +44,7 @@ const Home: NextPage = () => {
     } else {
       return `${getLocaleString(
         exchangeRate?.quotes[`${SEND_COUNTRY_PAY}${receiptCountryPay}`]
-      )} ${SEND_COUNTRY_PAY}/${receiptCountryPay}`;
+      )} ${receiptCountryPay}/${SEND_COUNTRY_PAY}`;
     }
   }, [loading, exchangeRate, receiptCountryPay]);
 
